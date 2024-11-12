@@ -9,6 +9,7 @@ def calcular_primo(rango_inicio, rango_fin):
     primos_en_rango = []
     
     for num in range(rango_inicio, rango_fin):
+        global numeros_primos #Las variables globales se declaran dentro de la función a ejecutar por el hijo
         if num < 2:
             continue
         es_primo = True
