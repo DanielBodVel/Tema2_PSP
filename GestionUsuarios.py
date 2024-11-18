@@ -17,7 +17,7 @@ if __name__ == '__main__':
     for i in range(5):
         nombre = nombres[i - 1]
         edad = edades[i - 1]
-        """TODO: Porque hay que poner una coma en args para que funcione"""
+        #TODO: Porque hay que poner una coma en args para que funcione
         hilo = threading.Thread(target=procesar_usuario, args=(ids[i-1],), kwargs={'nombreIn': nombre, 'edadIn': edad})
         hilos.append(hilo)
         hilo.start()
