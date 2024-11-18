@@ -16,10 +16,9 @@ class ProcesadorArchivo(threading.Thread):
 
     def run(self):
         contadorLinea = 0
-        for i in len(nombresArchivo):
-            for f in nombresArchivo[i]:
-                if f == "\n":
-                    contadorLinea +=1
+        for i in nombresArchivo:
+            if nombresArchivo[i] == "\n":
+                contadorLinea +=1
 
 
 if __name__ == '__main__':
