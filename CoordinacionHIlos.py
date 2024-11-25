@@ -1,13 +1,5 @@
 import threading
 
-# Contador compartido y objeto Condition
-contador = 1
-condicion = threading.Condition()
-
-# Número total de iteraciones
-total_iteraciones = 5
-
-
 def preparacion():
     global contador
     for i in range(1, total_iteraciones + 1):
@@ -38,17 +30,19 @@ def empaque():
             condicion.notify_all()  # Notifica a los demás hilos
 
 
-# Creación de los hilos
-hilo_preparacion = threading.Thread(target=preparacion)
-hilo_procesamiento = threading.Thread(target=procesamiento)
-hilo_empaque = threading.Thread(target=empaque)
+if __name__ == '__main__':
+    contador = 1
+    condicion = threading.Condition()
+    total_iteraciones = 5
 
-# Inicio de los hilos
-hilo_preparacion.start()
-hilo_procesamiento.start()
-hilo_empaque.start()
+    hilo_preparacion = threading.Thread(target=preparacion)
+    hilo_procesamiento = threading.Thread(target=procesamiento)
+    hilo_empaque = threading.Thread(target=empaque)
 
-# Esperar a que los hilos terminen
-hilo_preparacion.join()
-hilo_procesamiento.join()
-hilo_empaque.join()
+    hilo_preparacion.start()
+    hilo_procesamiento.start()
+    hilo_empaque.start()
+
+    hilo_preparacion.join()
+    hilo_procesamiento.join()
+    hilo_empaque.join()
